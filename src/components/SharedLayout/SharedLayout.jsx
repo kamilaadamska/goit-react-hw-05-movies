@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Container, Header, Logo, Link } from './SharedLayout.styled';
-import { RotatingTriangles } from 'react-loader-spinner';
+import { Loader } from 'components/Loader';
 
 export const SharedLayout = () => {
   return (
@@ -20,7 +20,7 @@ export const SharedLayout = () => {
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
-      <Suspense fallback={<RotatingTriangles />}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </Container>
