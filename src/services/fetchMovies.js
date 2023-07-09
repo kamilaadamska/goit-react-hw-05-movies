@@ -25,6 +25,7 @@ export const fetchMoviesWithQuery = async searchQuery => {
       },
     }
   );
+  if (searchQuery === '') return 'empty';
   console.log('by query', response.data);
   return response.data;
 };
