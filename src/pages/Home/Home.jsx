@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/fetchMovies';
-import { Headline, ListItem, List } from './Home.styled';
+import { Headline } from './Home.styled';
+import { MovieList } from 'components';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -22,11 +23,7 @@ const Home = () => {
   return (
     <>
       <Headline>Trending today</Headline>
-      <List>
-        {movies.map(({ id, title }) => (
-          <ListItem key={id}>{title}</ListItem>
-        ))}
-      </List>
+      <MovieList movies={movies} />
     </>
   );
 };
