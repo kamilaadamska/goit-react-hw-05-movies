@@ -14,3 +14,13 @@ export const fetchTrendingMovies = async () => {
   console.log(response.data);
   return response.data;
 };
+
+export const fetchMovieById = async id => {
+  const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
+    params: {
+      api_key: API_KEY,
+    },
+  });
+  console.log(response.data);
+  return response.data;
+};
