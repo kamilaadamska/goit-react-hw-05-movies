@@ -5,6 +5,7 @@ import { SharedLayout } from './SharedLayout';
 import { fetchTrendingMovies } from 'services/fetchMovies';
 
 const Home = lazy(() => import('../pages/Home/Home'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -27,6 +28,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home movies={movies} />} />
+        <Route path="movies" element={<Movies />} />
       </Route>
     </Routes>
   );
