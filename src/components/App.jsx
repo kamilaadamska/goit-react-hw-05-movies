@@ -4,7 +4,7 @@ import { lazy } from 'react';
 import { SharedLayout } from './SharedLayout';
 import { fetchTrendingMovies } from 'services/fetchMovies';
 
-const Home = lazy(() => import('../pages/Home'));
+const Home = lazy(() => import('../pages/Home/Home'));
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
