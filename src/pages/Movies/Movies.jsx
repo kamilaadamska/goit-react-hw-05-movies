@@ -2,8 +2,8 @@ import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMoviesWithQuery } from 'services/fetchMovies';
 import { MovieList } from 'components';
+import { Error } from 'components';
 import { StyledForm, StyledInput, StyledButton } from './Movies.styled';
-import notFound from '../../images/img_noresults_movies.png';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,16 +44,7 @@ const Movies = () => {
         <StyledButton type="submit">Search</StyledButton>
       </StyledForm>
       <MovieList movies={searchedMovies} />
-      {error && (
-        <img
-          src={notFound}
-          alt="movie not found"
-          style={{
-            margin: '0 auto',
-            display: 'block',
-          }}
-        />
-      )}
+      {error && <Error />}
     </main>
   );
 };
