@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Container, Header, Logo, Link } from './SharedLayout.styled';
+import { fetchTrendingMovies } from 'services/fetchMovies';
 
 export const SharedLayout = () => {
   return (
@@ -18,6 +19,9 @@ export const SharedLayout = () => {
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
+      <button type="button" onClick={() => fetchTrendingMovies()}>
+        Pobierz
+      </button>
       <Outlet />
     </Container>
   );
