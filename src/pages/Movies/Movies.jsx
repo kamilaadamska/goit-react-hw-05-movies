@@ -2,12 +2,12 @@ import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMoviesWithQuery } from 'services/fetchMovies';
 import { MovieList } from 'components';
+import { StyledForm, StyledInput, StyledButton } from './Movies.styled';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchedMovies, setSearchedMovies] = useState([]);
   const searchedTitle = searchParams.get('query') ?? '';
-  console.log(searchedMovies);
 
   const updateQueryString = event => {
     event.preventDefault();
@@ -33,10 +33,10 @@ const Movies = () => {
 
   return (
     <main>
-      <form onSubmit={updateQueryString}>
-        <input name="searchQuery" />
-        <button type="submit">Search</button>
-      </form>
+      <StyledForm onSubmit={updateQueryString}>
+        <StyledInput name="searchQuery" />
+        <StyledButton type="submit">Search</StyledButton>
+      </StyledForm>
       <MovieList movies={searchedMovies} />
     </main>
   );
