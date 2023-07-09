@@ -1,20 +1,35 @@
 import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { fetchMoviesWithQuery } from 'services/fetchMovies';
+import { MovieList } from 'components';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchedTitle = searchParams.get('searchedMovie') ?? '';
+  const [searchedMovies, setSearchedMovies] = useState([]);
+  const searchedTitle = searchParams.get('query') ?? '';
+  console.log(searchedMovies);
 
   const updateQueryString = event => {
     event.preventDefault();
     const searchForm = event.target;
     const searchedMovie = searchForm.elements.searchQuery.value;
-    console.log(searchedMovie);
-    const nextParams = searchedMovie !== '' ? { searchedMovie } : {};
+    const nextParams = searchedMovie !== '' ? { query: searchedMovie } : {};
     setSearchParams(nextParams);
-    console.log('params', searchParams);
   };
 
-  console.log('title', searchedTitle);
+  useEffect(() => {
+    const getSearchedMovies = async () => {
+      try {
+        const newData = await fetchMoviesWithQuery(searchedTitle);
+        const newMovies = newData.results;
+        newMovies ? setSearchedMovies(newMovies) : setSearchedMovies([]);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    getSearchedMovies();
+  }, [searchedTitle]);
 
   return (
     <main>
@@ -22,6 +37,7 @@ const Movies = () => {
         <input name="searchQuery" />
         <button type="submit">Search</button>
       </form>
+      <MovieList movies={searchedMovies} />
     </main>
   );
 };

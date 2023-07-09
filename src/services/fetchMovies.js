@@ -11,7 +11,21 @@ export const fetchTrendingMovies = async () => {
       },
     }
   );
-  console.log(response.data);
+  console.log('trending', response.data);
+  return response.data;
+};
+
+export const fetchMoviesWithQuery = async searchQuery => {
+  const response = await axios.get(
+    'https://api.themoviedb.org/3/search/movie',
+    {
+      params: {
+        api_key: API_KEY,
+        query: searchQuery,
+      },
+    }
+  );
+  console.log('by query', response.data);
   return response.data;
 };
 
@@ -21,6 +35,6 @@ export const fetchMovieById = async id => {
       api_key: API_KEY,
     },
   });
-  console.log(response.data);
+  console.log('byID', response.data);
   return response.data;
 };
