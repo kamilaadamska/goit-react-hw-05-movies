@@ -13,6 +13,7 @@ export const StyledH2 = styled.h2`
   background-color: #6e3562;
   padding: 4px;
   border-radius: 3px;
+  margin-top: 0;
 `;
 
 export const StyledH3 = styled.h3`

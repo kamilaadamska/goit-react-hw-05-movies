@@ -5,6 +5,7 @@ import {
   StyledH4,
   GenresSpan,
 } from './MovieBox.styled';
+import noPoster from '../../images/No_Poster.webp';
 
 export const MovieBox = ({ movie }) => {
   const { title, poster_path, release_date, vote_average, overview, genres } =
@@ -15,14 +16,13 @@ export const MovieBox = ({ movie }) => {
     : null;
   const percentageScore = (vote_average * 10).toFixed(0) + '%';
   const getGenres = genres.map(({ name }) => `${name}`);
+  const poster = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : noPoster;
 
   return (
     <MovieContainer>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-        alt="movie poster"
-        width="250"
-      />
+      <img src={poster} alt="movie poster" width="250" />
       <div>
         <StyledH2>
           {title} {year}
