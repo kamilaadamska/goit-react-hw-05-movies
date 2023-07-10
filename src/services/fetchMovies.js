@@ -39,3 +39,16 @@ export const fetchMovieById = async id => {
   console.log('byID', response.data);
   return response.data;
 };
+
+export const fetchMovieCast = async id => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits`,
+    {
+      params: {
+        api_key: API_KEY,
+      },
+    }
+  );
+  console.log('aktorzy', response.data.cast);
+  return response.data.cast;
+};
