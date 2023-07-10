@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const List = styled.ul`
   display: flex;
@@ -14,4 +15,13 @@ export const ListItem = styled.li`
   background-color: #34586e;
   text-align: center;
   box-shadow: 0px 0px 9px 0px rgba(66, 68, 90, 1);
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    color: #dfb160;
+  }
 `;
