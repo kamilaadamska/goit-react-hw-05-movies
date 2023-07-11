@@ -1,30 +1,34 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMovieCast } from 'services/fetchMovies';
+import { CastList } from 'components/CastList';
 
 const ShowCast = () => {
   const { id } = useParams();
 
   const [cast, setCast] = useState(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchCast = async () => {
       try {
+        setError('');
         const newCast = await fetchMovieCast(id);
+        if (newCast.length === 0) throw new Error();
         setCast(newCast);
-        console.log('nowi', cast);
       } catch (error) {
-        console.error('Sorry, an error occured:', error);
+        setError('No cast found in our database.');
       }
     };
 
     fetchCast();
-  }, []);
+  }, [id]);
 
   return (
-    <p>
-      {cast && cast.map(({ name }) => <span>{name}</span>)} Tu będą aktorzy...
-    </p>
+    <div>
+      {cast && <CastList cast={cast} />}
+      {error && <p>{error}</p>}
+    </div>
   );
 };
 

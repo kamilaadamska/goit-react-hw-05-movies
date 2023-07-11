@@ -29,9 +29,11 @@ export const MovieBox = ({ movie }) => {
         </StyledH2>
         <span>User score: {percentageScore}</span>
         <StyledH3>Overview</StyledH3>
-        <p>{overview ? overview : null}</p>
+        <p>{overview ? overview : 'We found no overview.'}</p>
         <StyledH4>Genres</StyledH4>
-        <GenresSpan>{getGenres.join(', ')}</GenresSpan>
+        <GenresSpan>
+          {genres ? getGenres.join(', ') : 'Genres unknown.'}
+        </GenresSpan>
       </div>
     </MovieContainer>
   );

@@ -2,8 +2,9 @@ import { useParams, useLocation } from 'react-router-dom';
 // import { BackLink } from '../components/BackLink';
 import { fetchMovieById } from 'services/fetchMovies';
 import { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { MovieBox } from 'components';
+import { StyledLink, Container } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -22,20 +23,22 @@ const MovieDetails = () => {
     };
 
     fetchMovie();
-  }, []);
+  }, [id]);
 
   return (
     <main>
       {movie && <MovieBox movie={movie} />}
-      <h3>Additional information</h3>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+      <Container>
+        <h3>Additional information</h3>
+        <ul>
+          <li>
+            <StyledLink to="cast">Cast</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="reviews">Reviews</StyledLink>
+          </li>
+        </ul>
+      </Container>
       <Outlet />
     </main>
   );
