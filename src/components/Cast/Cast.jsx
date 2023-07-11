@@ -27,7 +27,7 @@ const ShowCast = () => {
   return (
     <div>
       {cast && <CastList cast={cast} />}
-      {error && <p>{error}</p>}
+      {error && <p style={{ textAlign: 'center' }}>{error}</p>}
     </div>
   );
 };

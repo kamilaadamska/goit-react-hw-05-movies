@@ -52,3 +52,16 @@ export const fetchMovieCast = async id => {
   console.log('aktorzy', response.data.cast);
   return response.data.cast;
 };
+
+export const fetchMovieReviews = async id => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/reviews`,
+    {
+      params: {
+        api_key: API_KEY,
+      },
+    }
+  );
+  console.log('opinie', response.data.results);
+  return response.data.results;
+};
