@@ -6,6 +6,7 @@ import {
   GenresSpan,
 } from './MovieBox.styled';
 import noPoster from '../../images/No_Poster.webp';
+import PropTypes from 'prop-types';
 
 export const MovieBox = ({ movie }) => {
   const { title, poster_path, release_date, vote_average, overview, genres } =
@@ -37,4 +38,8 @@ export const MovieBox = ({ movie }) => {
       </div>
     </MovieContainer>
   );
+};
+
+MovieBox.propTypes = {
+  movie: PropTypes.object,
 };

@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { List, ListItem, StyledLink } from './MovieList.styled';
+import PropTypes from 'prop-types';
 
 export const MovieList = ({ movies }) => {
   const location = useLocation();
@@ -12,8 +13,6 @@ export const MovieList = ({ movies }) => {
     }
   };
 
-  console.log('lokacja listy filmów', location);
-
   return (
     <List>
       {movies.map(({ id, title }) => (
@@ -25,4 +24,8 @@ export const MovieList = ({ movies }) => {
       ))}
     </List>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(object),
 };

@@ -5,6 +5,7 @@ import {
   SpanLabel,
 } from './CastList.styled';
 import noPhoto from '../../images/No-Image.png';
+import PropTypes, { object } from 'prop-types';
 
 export const CastList = ({ cast }) => {
   return (
@@ -24,4 +25,8 @@ export const CastList = ({ cast }) => {
       })}
     </CastContainer>
   );
+};
+
+CastList.propTypes = {
+  cast: PropTypes.arrayOf(object),
 };

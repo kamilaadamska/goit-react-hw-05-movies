@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { fetchMovieCast } from 'services/fetchMovies';
 import { CastList } from 'components/CastList';
 
-const ShowCast = () => {
+const Cast = () => {
   const { id } = useParams();
 
   const [cast, setCast] = useState(null);
@@ -32,4 +32,4 @@ const ShowCast = () => {
   );
 };
 
-export default ShowCast;
+export default Cast;
