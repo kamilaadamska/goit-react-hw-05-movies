@@ -7,5 +7,5 @@ export const BackLink = ({ to }) => {
 };
 
 BackLink.propTypes = {
-  to: PropTypes.string,
+  to: PropTypes.object,
 };
