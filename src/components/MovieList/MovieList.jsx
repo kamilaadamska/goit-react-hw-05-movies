@@ -12,6 +12,8 @@ export const MovieList = ({ movies }) => {
     }
   };
 
+  console.log('lokacja listy filmów', location);
+
   return (
     <List>
       {movies.map(({ id, title }) => (

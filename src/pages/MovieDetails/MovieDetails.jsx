@@ -1,5 +1,5 @@
 import { useParams, useLocation } from 'react-router-dom';
-// import { BackLink } from '../components/BackLink';
+import { BackLink } from 'components';
 import { fetchMovieById } from 'services/fetchMovies';
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -8,9 +8,10 @@ import { StyledLink, Container } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { id } = useParams();
-  // const location = useLocation();
+  const location = useLocation();
 
   const [movie, setMovie] = useState(null);
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -27,23 +28,26 @@ const MovieDetails = () => {
 
   return (
     <main>
+      <BackLink to={backLinkHref} />
       {movie && <MovieBox movie={movie} />}
       <Container>
         <h3>Additional information</h3>
         <ul>
           <li>
-            <StyledLink to="cast">Cast</StyledLink>
+            <StyledLink to="cast" state={{ from: backLinkHref }}>
+              Cast
+            </StyledLink>
           </li>
           <li>
-            <StyledLink to="reviews">Reviews</StyledLink>
+            <StyledLink to="reviews" state={{ from: backLinkHref }}>
+              Reviews
+            </StyledLink>
           </li>
         </ul>
       </Container>
       <Outlet />
     </main>
   );
-
-  // const backLinkHref = location.state?.from ?? '/products'; // <BackLink to={backLinkHref}>Back to products</BackLink>
 };
 
 export default MovieDetails;

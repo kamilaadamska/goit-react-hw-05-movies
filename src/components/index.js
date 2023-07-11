@@ -6,3 +6,4 @@ export * from './MovieBox';
 export * from './Cast';
 export * from './CastList';
 export * from './Reviews';
+export * from './BackLink';
