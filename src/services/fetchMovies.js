@@ -11,7 +11,7 @@ export const fetchTrendingMovies = async () => {
       },
     }
   );
-  console.log('trending', response.data);
+
   return response.data;
 };
 
@@ -26,7 +26,7 @@ export const fetchMoviesWithQuery = async searchQuery => {
     }
   );
   if (searchQuery === '') return 'empty';
-  console.log('by query', response.data);
+
   return response.data;
 };
 
@@ -36,7 +36,7 @@ export const fetchMovieById = async id => {
       api_key: API_KEY,
     },
   });
-  console.log('byID', response.data);
+
   return response.data;
 };
 
@@ -49,7 +49,7 @@ export const fetchMovieCast = async id => {
       },
     }
   );
-  console.log('aktorzy', response.data.cast);
+
   return response.data.cast;
 };
 
@@ -62,6 +62,6 @@ export const fetchMovieReviews = async id => {
       },
     }
   );
-  console.log('opinie', response.data.results);
+
   return response.data.results;
 };
