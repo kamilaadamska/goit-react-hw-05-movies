@@ -16,7 +16,7 @@ export const CastList = ({ cast }) => {
           : `${noPhoto}`;
         return (
           <ActorCard key={id}>
-            <img src={photo} alt="photo of the actor" width="150px" />
+            <img src={photo} alt="the actor" width="150px" />
             <SpanName>{name}</SpanName>
             <SpanLabel>Character:</SpanLabel>
             <span>{character ? character : 'Unknown'}</span>
