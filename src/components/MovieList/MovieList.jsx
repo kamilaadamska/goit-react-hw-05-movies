@@ -5,7 +5,7 @@ export const MovieList = ({ movies }) => {
   const location = useLocation();
 
   const customRoute = id => {
-    if (location.pathname === '/') {
+    if (location.pathname !== '/movies') {
       return `movies/${id}`;
     } else {
       return `${id}`;
