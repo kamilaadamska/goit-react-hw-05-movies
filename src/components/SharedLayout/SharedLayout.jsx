@@ -7,7 +7,7 @@ export const SharedLayout = () => {
   return (
     <Container>
       <Header>
-        <a href="/goit-react-hw-05-movies">
+        <a href="/">
           <Logo>
             <span role="img" aria-label="movie icon">
               🎬
